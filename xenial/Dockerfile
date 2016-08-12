@@ -22,8 +22,8 @@ RUN mkdir -p /opt/snap/bin && \
     mkdir -p /opt/snap/plugins && \
     mkdir -p /etc/snap
 
-RUN curl "https://s3-us-west-2.amazonaws.com/intelsdi-x/snap/${SNAP_VERSION}/snapd" > /opt/snap/bin/snapd && \
-    curl "https://s3-us-west-2.amazonaws.com/intelsdi-x/snap/${SNAP_VERSION}/snapctl" > /opt/snap/bin/snapctl && \
+RUN curl "https://s3-us-west-2.amazonaws.com/snap.ci.snap-telemetry.io/snap/master/${SNAP_VERSION}/snapd" > /opt/snap/bin/snapd && \
+    curl "https://s3-us-west-2.amazonaws.com/snap.ci.snap-telemetry.io/snap/master/${SNAP_VERSION}/snapctl" > /opt/snap/bin/snapctl && \
     chmod 775 /opt/snap/bin/snapd && \
     chmod 775 /opt/snap/bin/snapctl && \
     ln -s /opt/snap/bin/snapd /usr/local/bin/snapd && \
