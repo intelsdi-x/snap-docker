@@ -17,6 +17,18 @@ LABEL vendor="Intelsdi-X" \
 EXPOSE 8181
 
 RUN apt-get update && apt-get install -y curl
-RUN curl -sfL "https://packagecloud.io/intelsdi-x/snap/packages/ubuntu/xenial/snap-telemetry_${SNAP_VERSION}-1xenial_amd64.deb/download" -o snap-telemetry.deb && dpkg -i snap-telemetry.deb && rm snap-telemetry.deb
+
+RUN mkdir -p /opt/snap/bin && \
+    mkdir -p /opt/snap/plugins && \
+    mkdir -p /etc/snap
+
+RUN curl "https://s3-us-west-2.amazonaws.com/intelsdi-x/snap/${SNAP_VERSION}/snapd" > /opt/snap/bin/snapd && \
+    curl "https://s3-us-west-2.amazonaws.com/intelsdi-x/snap/${SNAP_VERSION}/snapctl" > /opt/snap/bin/snapctl && \
+    chmod 775 /opt/snap/bin/snapd && \
+    chmod 775 /opt/snap/bin/snapctl && \
+    ln -s /opt/snap/bin/snapd /usr/local/bin/snapd && \
+    ln -s /opt/snap/bin/snapctl /usr/local/bin/snapctl
+
+COPY snapd.conf /etc/snap/snapd.conf
 
 CMD /opt/snap/bin/snapd -t ${SNAP_TRUST_LEVEL} -l ${SNAP_LOG_LEVEL} -o ''
