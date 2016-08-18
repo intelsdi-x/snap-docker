@@ -1,4 +1,4 @@
-FROM ubuntu:12.04
+FROM ubuntu:14.04
 MAINTAINER Nan Liu <nan.liu@gmail.com>
 
 ARG SNAP_VERSION
@@ -8,7 +8,7 @@ ENV SNAP_TRUST_LEVEL=0
 ENV SNAP_LOG_LEVEL=1
 
 LABEL vendor="Intelsdi-X" \
-      name="Ubuntu 12.04 Snap ${SNAP_VERSION}" \
+      name="Ubuntu 16.04 Snap ${SNAP_VERSION}" \
       license="Apache 2.0" \
       build-date=$BUILD_DATE \
       io.snap-telemetry.snap.version.is-beta= \

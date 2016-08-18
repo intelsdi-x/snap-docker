@@ -4,6 +4,6 @@ set -e
 set -u
 set -o pipefail
 
-version=$1
+version=${1:-"latest"}
 
 find . -not -path '*/\.*' -name Dockerfile -exec dirname {} \; |cut -c 3- | xargs -n1 -I{} ./build.sh {} "${version}"

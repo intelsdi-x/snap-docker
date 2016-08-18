@@ -5,7 +5,7 @@ set -u
 set -o pipefail
 
 os=$1
-version=$2
+version=${2:-"latest"}
 org=nanliu
 
 cmd="docker build -t ${org}/snap:${version}_${os} \
