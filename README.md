@@ -12,7 +12,7 @@ This repository contains snap installed on several linux operating system.
 * CentOS 6 ([centos6/Dockerfile](https://github.com/nanliu/snap_docker/blob/master/centos6/Dockerfile))
 * CentOS 7 ([centos7/Dockerfile](https://github.com/nanliu/snap_docker/blob/master/centos7/Dockerfile))
 
-Addiitonal [image layer info](https://microbadger.com/#/images/nanliu/snap)
+Additional [image layer info](https://microbadger.com/#/images/nanliu/snap)
 
 ## Build Docker Containers
 
