@@ -8,7 +8,7 @@ ENV SNAP_TRUST_LEVEL=0
 ENV SNAP_LOG_LEVEL=1
 
 LABEL vendor="Intelsdi-X" \
-      name="Ubuntu 16.04 Snap ${SNAP_VERSION}" \
+      name="Ubuntu 14.04 Snap ${SNAP_VERSION}" \
       license="Apache 2.0" \
       build-date=$BUILD_DATE \
       io.snap-telemetry.snap.version.is-beta= \
