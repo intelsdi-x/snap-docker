@@ -2,7 +2,7 @@
 
 [Snap](http://snap-telemetry.io/) is on open source telemetry framework.
 
-[![](https://images.microbadger.com/badges/version/nanliu/snap.svg)](http://microbadger.com/images/nanliu/snap)
+[![](https://images.microbadger.com/badges/image/nanliu/snap.svg)](http://microbadger.com/images/nanliu/snap)
 
 This repository contains snap installed on several linux operating system. 
 
