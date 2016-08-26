@@ -16,7 +16,9 @@ LABEL vendor="Intelsdi-X" \
 
 EXPOSE 8181
 
-RUN apt-get update && apt-get install -y curl
+RUN apt-get update && apt-get install -y curl && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY install_snap /usr/local/bin/install_snap
 RUN /usr/local/bin/install_snap
