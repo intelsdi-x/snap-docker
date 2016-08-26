@@ -6,11 +6,12 @@
 
 This repository contains snap installed on several linux operating system. 
 
+* Alpine 3.4 ([alpine/Dockerfile](https://github.com/nanliu/snap_docker/blob/master/alpine/Dockerfile))
+* CentOS 6 ([centos6/Dockerfile](https://github.com/nanliu/snap_docker/blob/master/centos6/Dockerfile))
+* CentOS 7 ([centos7/Dockerfile](https://github.com/nanliu/snap_docker/blob/master/centos7/Dockerfile))
 * Ubuntu 12.04 trusty ([trusty/Dockerfile](https://github.com/nanliu/snap_docker/blob/master/trusty/Dockerfile))
 * Ubuntu 14.04 precise ([precise/Dockerfile](https://github.com/nanliu/snap_docker/blob/master/precise/Dockerfile))
 * Ubuntu 16.04 xenial ([precise/Dockerfile](https://github.com/nanliu/snap_docker/blob/master/xenial/Dockerfile))
-* CentOS 6 ([centos6/Dockerfile](https://github.com/nanliu/snap_docker/blob/master/centos6/Dockerfile))
-* CentOS 7 ([centos7/Dockerfile](https://github.com/nanliu/snap_docker/blob/master/centos7/Dockerfile))
 
 Additional [image layer info](https://microbadger.com/#/images/nanliu/snap)
 
