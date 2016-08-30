@@ -16,7 +16,10 @@ LABEL vendor="Intelsdi-X" \
 
 EXPOSE 8181
 
-RUN apk add --update curl && \
+RUN apk update && \
+    apk add curl && \
+    apk add bash && \
+    apk add jq && \
     rm -rf /var/cache/apk/*
 
 COPY install_snap /usr/local/bin/install_snap
