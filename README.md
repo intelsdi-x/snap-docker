@@ -19,7 +19,7 @@ Additional [image layer info](https://microbadger.com/#/images/intelsdi/snap)
 
 To build a new Docker container:
 ```
-$ build.sh <operating_system> <version> <org>
+$ build.sh <operating_system> <org>
 ```
 
 The operating system supports:
@@ -30,25 +30,44 @@ The operating system supports:
 * precise
 * xenial
 
-The version supports
-* version (git tag > 0.14.0)
-* latest (this is the latest build from snap master branch)
-* git_sha
-
 The org is the docker organization and defaults to (intelsdi)
 
 Examples:
 
 ```
-$ build.sh alpine latest intelsdi
-$ build.sh trusty latest
-$ build.sh precise 0.14.0
-$ build.sh centos6 0.15.0
-$ build.sh centos7 906d19b646837393f9893870cc2929e791b1f3fb
+$ build.sh alpine intelsdi
+$ build.sh trusty
+$ build.sh precise
+$ build.sh centos6
+$ build.sh centos7
 ```
 
 build_all.sh is a shortcut to build all supported operating systems:
 
 ```
-$ build_all.sh <version>
+$ build_all.sh
 ```
+
+## Run Snap Containers
+
+The snap containers by default will pull the latest snap build binaries. For a specific release, specify SNAP_VERSION environment variable with:
+
+* latest (this is the default, which retrieves the latest build from snap master branch)
+* version (git tag > 0.14.0)
+* full git sha
+
+```
+$ docker run -e SNAP_VERSION=0.15.0 intelsdi/snap:alpine
+time="2016-08-30T17:52:04Z" level=info msg="setting log level to: debug"
+time="2016-08-30T17:52:04Z" level=info msg="Starting snapd (version: v0.15.0-beta)"
+...
+```
+
+```
+$ docker run -e SNAP_VERSION=906d19b646837393f9893870cc2929e791b1f3fb intelsdi/snap:alpine
+time="2016-08-30T17:58:10Z" level=info msg="setting log level to: debug"
+time="2016-08-30T17:58:10Z" level=info msg="Starting snapd (version: test-906d19b)"
+...
+```
+
+See snapd man page for additional information on environment variables such as SNAP_TRUST_LEVEL, SNAP_LOG_LEVEL.

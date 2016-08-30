@@ -1,14 +1,14 @@
 FROM ubuntu:12.04
 MAINTAINER Nan Liu <nan.liu@gmail.com>
 
-ARG SNAP_VERSION
 ARG BUILD_DATE
 
+ENV SNAP_VERSION="latest"
 ENV SNAP_TRUST_LEVEL=0
 ENV SNAP_LOG_LEVEL=1
 
 LABEL vendor="Intelsdi-X" \
-      name="Ubuntu 12.04 Snap ${SNAP_VERSION}" \
+      name="Snap Ubuntu 12.04" \
       license="Apache 2.0" \
       build-date=$BUILD_DATE \
       io.snap-telemetry.snap.version.is-beta= \
@@ -21,7 +21,6 @@ RUN apt-get update && apt-get install -y curl && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY install_snap /usr/local/bin/install_snap
-RUN /usr/local/bin/install_snap
 COPY snapd.conf /etc/snap/snapd.conf
 
-CMD /opt/snap/bin/snapd -t ${SNAP_TRUST_LEVEL} -l ${SNAP_LOG_LEVEL} -o ''
+CMD /usr/local/bin/install_snap && /opt/snap/bin/snapd -t ${SNAP_TRUST_LEVEL} -l ${SNAP_LOG_LEVEL} -o ''
