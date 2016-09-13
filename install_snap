@@ -4,6 +4,8 @@ set -e
 set -u
 set -o pipefail
 
+SNAP_VERSION=${SNAP_VERSION:-latest}
+
 mkdir -p /opt/snap/bin
 mkdir -p /opt/snap/plugins
 mkdir -p /var/log/snap
