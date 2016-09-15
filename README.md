@@ -19,7 +19,7 @@ Additional [image layer info](https://microbadger.com/#/images/intelsdi/snap)
 
 To build a new Docker container:
 ```
-$ build.sh <operating_system> <org>
+$ build.sh <operating_system> <org> <version>
 ```
 
 The operating system supports:
@@ -32,11 +32,17 @@ The operating system supports:
 
 The org is the docker organization and defaults to (intelsdi)
 
+The supported versions are:
+* latest (this is the default, which retrieves the latest build from snap master branch)
+* version (git tag > 0.14.0)
+* full git sha
+
 Examples:
 
 ```
-$ build.sh alpine intelsdi
-$ build.sh trusty
+$ build.sh alpine intelsdi latest
+$ build.sh trusty intelsdi 0.15.0
+$ build.sh trusty intelsdi
 $ build.sh precise
 $ build.sh centos6
 $ build.sh centos7
