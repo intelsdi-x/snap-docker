@@ -20,7 +20,7 @@ ADD https://s3-us-west-2.amazonaws.com/snap.ci.snap-telemetry.io/snap/master/${S
 ADD https://s3-us-west-2.amazonaws.com/snap.ci.snap-telemetry.io/snap/master/${SNAP_VERSION}/snapctl /opt/snap/bin/snapctl
 RUN chmod a+x /opt/snap/bin/* && \
 	ln -s /opt/snap/bin/snapd /usr/local/bin/snapd && \
-	ln -s /opt/snap/bin/snapctl /usr/local/bin/snapctl
+	ln -s /opt/snap/bin/snapctl /usr/local/bin/snapctl \
 	mkdir -p /opt/snap/plugins && \
 	mkdir -p /var/log/snap
 	
