@@ -1,0 +1,18 @@
+#!/bin/sh
+
+set -e
+set -u
+
+SNAP_VERSION=${SNAP_VERSION:-latest}
+
+mkdir -p /opt/snap/bin
+mkdir -p /opt/snap/plugins
+mkdir -p /var/log/snap
+mkdir -p /etc/snap
+
+[ -f /opt/snap/bin/snapd ] || curl -sfL "https://s3-us-west-2.amazonaws.com/snap.ci.snap-telemetry.io/snap/${SNAP_VERSION}/linux/x86_64/snapd" -o /opt/snap/bin/snapd
+[ -f /opt/snap/bin/snapctl ] || curl -sfL "https://s3-us-west-2.amazonaws.com/snap.ci.snap-telemetry.io/snap/${SNAP_VERSION}/linux/x86_64/snapctl" -o /opt/snap/bin/snapctl
+chmod 755 /opt/snap/bin/snapd
+chmod 755 /opt/snap/bin/snapctl
+[ -f /usr/local/bin/snapd ] || ln -s /opt/snap/bin/snapd /usr/local/bin/snapd
+[ -f /usr/local/bin/snapctl ] || ln -s /opt/snap/bin/snapctl /usr/local/bin/snapctl
