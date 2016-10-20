@@ -7,7 +7,7 @@ rvm:
   - 2.3
 before_deploy:
   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - build_all.sh
+  - ./build_all.sh
 deploy:
   provider: script
   script: docker_push.sh
