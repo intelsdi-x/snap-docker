@@ -5,11 +5,13 @@ language: ruby
 cache: bundler
 rvm:
   - 2.3
+before_install:
+  - rake docker:pull
 before_deploy:
   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - ./build_all.sh
+  - rake build:all
 deploy:
   provider: script
-  script: docker_push.sh
+  script: rake docker:push
   on:
     branch: master

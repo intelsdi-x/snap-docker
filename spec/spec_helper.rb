@@ -1,8 +1,10 @@
+require 'rspec/retry'
 require 'dockerspec/serverspec'
 
 RSpec.configure do |c|
   c.formatter = 'documentation'
   c.mock_framework = :rspec
+  c.verbose_retry = true
 end
 
 shared_examples "metadata" do
@@ -91,16 +93,15 @@ shared_examples "snap containers" do |os|
     }
   end
 
-  describe port('8181') do
+  describe port('8181'), :retry => 3, :retry_wait => 10 do
     it { should be_listening }
   end if options[:port_check]
 
-  # NOTE: verify binaries are statically linked:
-  describe command('/opt/snap/bin/snapctl --version') do
-    its(:stdout) { should match /snapctl version/ }
-  end
-
   describe command('/opt/snap/bin/snapd --version') do
     its(:stdout) { should match /snapd version/ }
+  end
+
+  describe command('/opt/snap/bin/snapctl --version'),:retry => 3, :retry_wait => 10 do
+    its(:stdout) { should match /snapctl version/ }
   end
 end
