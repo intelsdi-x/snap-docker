@@ -15,7 +15,7 @@ BUILDS.each do |os|
         it { should have_label( "io.snap-telemetry.snap.version" => "latest_build" ) }
 
         describe docker_run(described_image) do
-          # NOTE: some platforms are missing packages for the ss command, and we do not want to install thi s requirement
+          # NOTE: some platforms are missing packages for the ss command, and we do not want to install this requirement
           it_behaves_like "snap containers", os
 
           describe package("bash") do
