@@ -10,8 +10,14 @@ before_install:
 before_deploy:
   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - rake build:all
+  - docker tag intelsdi/snap:xenial intelsdi/snap:latest
+  - docker push intelsdi/snap:latest
 deploy:
   provider: script
   script: rake docker:push
   on:
     branch: master
+notifications:
+  email: false
+  slack:
+    secure: VkbZLIc2RH8yf3PtIAxUNPdAu3rQQ7yQx0GcK124JhbEnZGaHyK615V0rbG7HcVmYKGPdB0cXqZiLBDKGqGKb2zR1NepOe1nF03jxGSpPq8jIFeEXSJGEYGL34ScDzZZGuG6qwbjFcXiW5lqn6t8igzp7v2+URYBaZo5ktCS2xY=

@@ -21,10 +21,14 @@ rescue LoadError
   # no rspec available
 end
 
-def build(os, org="intelsdi")
+def build(os, org="intelsdi", version=nil)
   raise "Error: missing operating system" unless os
   raise "Error: invalid operating system #{os}" unless File.exists? "#{os}/Dockerfile"
-  sh "docker build -t #{org}/snap:#{os} --build-arg BUILD_DATE=$(date +%Y-%m-%d) -f #{os}/Dockerfile ."
+  if version
+    sh "docker build -t #{org}/snap:#{version}_#{os} --build-arg BUILD_DATE=$(date +%Y-%m-%d) --build-arg SNAP_VERSION=#{version} -f #{os}/Dockerfile ."
+  else
+    sh "docker build -t #{org}/snap:#{os} --build-arg BUILD_DATE=$(date +%Y-%m-%d) -f #{os}/Dockerfile ."
+  end
 end
 
 def containers
@@ -34,17 +38,17 @@ end
 namespace :build do
   containers.each do |os|
     desc "build docker container for #{os}"
-    task os.to_sym, [:org] do |t, args|
+    task os.to_sym, [:org, :version] do |t, args|
       org = args[:org] || "intelsdi"
-      build os, org
+      build os, org, args[:version]
     end
   end
 
   desc "buils all docker containers"
-  task :all, [:org] do |t, args|
+  task :all, [:org, :version] do |t, args|
     containers.each do |os|
       org = args[:org] || "intelsdi"
-      build os, org
+      build os, org, args[:version]
     end
   end
 end

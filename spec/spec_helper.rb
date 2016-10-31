@@ -4,6 +4,7 @@ require 'dockerspec/serverspec'
 RSpec.configure do |c|
   c.formatter = 'documentation'
   c.mock_framework = :rspec
+  c.order = 'default'
   c.verbose_retry = true
 end
 
