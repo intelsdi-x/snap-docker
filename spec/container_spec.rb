@@ -45,7 +45,7 @@ BUILDS.each do |os|
       describe docker_build("#{os}/.") do
         include_examples "metadata"
 
-        it { should have_env "SNAP_URL" }
+        it { should have_env "CI_URL" }
         it { should have_label( "io.snap-telemetry.snap.version" => "latest" ) }
 
         describe docker_run(described_image) do
