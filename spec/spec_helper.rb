@@ -24,7 +24,7 @@ shared_examples "metadata" do
   end
 
   it { should have_expose '8181' }
-  it { should have_cmd ["/bin/sh", "-c", "/usr/local/bin/init_snap && /opt/snap/bin/snapd -t ${SNAP_TRUST_LEVEL} -l ${SNAP_LOG_LEVEL} -o ''"] }
+  it { should have_cmd ["/bin/sh", "-c", "/usr/local/bin/init_snap && /opt/snap/sbin/snapteld -t ${SNAP_TRUST_LEVEL} -l ${SNAP_LOG_LEVEL} -o ''"] }
 end
 
 shared_examples "snap containers" do |os|
@@ -41,8 +41,8 @@ shared_examples "snap containers" do |os|
   end
 
   bins = [
-    "/opt/snap/bin/snapctl",
-    "/opt/snap/bin/snapd",
+    "/opt/snap/bin/snaptel",
+    "/opt/snap/sbin/snapteld",
     "/usr/local/bin/init_snap",
   ]
 
@@ -53,25 +53,24 @@ shared_examples "snap containers" do |os|
     end
   end
 
-  symlinks = [
-    "/usr/local/bin/snapctl",
-    "/usr/local/bin/snapd",
-  ]
-
-  symlinks.each do |f|
+  symlinks = {
+    "/usr/local/sbin/snapteld" => "/opt/snap/sbin/snapteld",
+    "/usr/local/bin/snaptel" => "/opt/snap/bin/snaptel",
+  }
+  symlinks.each do |f, t|
     describe file(f) do
       it { should be_symlink }
-      it { should be_linked_to f.gsub("/usr/local/bin", "/opt/snap/bin") }
+      it { should be_linked_to t }
     end
   end
 
-  snaptel = {
-    "/opt/snap/bin/snaptel" => "/opt/snap/bin/snapctl",
-    "/opt/snap/sbin/snapteld" => "/opt/snap/bin/snapd",
-    "/usr/bin/snaptel" => "/opt/snap/bin/snapctl",
-    "/usr/sbin/snapteld" => "/opt/snap/bin/snapd",
+# This can be removed after test have been migrated to the new binaries
+  snapd = {
+    "/usr/local/sbin/snapd" => "/opt/snap/sbin/snapteld",
+    "/usr/local/bin/snapctl" => "/opt/snap/bin/snaptel",
+    "/etc/snap/snapd.conf" => "/etc/snap/snapteld.conf",
   }
-  snaptel.each do |f, t|
+  snapd.each do |f, t|
     describe file(f) do
       it { should be_symlink }
       it { should be_linked_to t }
@@ -91,12 +90,12 @@ shared_examples "snap containers" do |os|
     end
   end
 
-  describe file('/var/log/snap/snapd.log') do
+  describe file('/var/log/snap/snapteld.log') do
     it { should be_file }
-    its(:content) { should match /snapd started/ }
+    its(:content) { should match /snapteld started/ }
   end if options[:log_check]
 
-  describe file('/etc/snap/snapd.conf') do
+  describe file('/etc/snap/snapteld.conf') do
     it { should be_file }
     its(:content_as_yaml) {
       should include('log_path' => '/var/log/snap')
@@ -111,11 +110,11 @@ shared_examples "snap containers" do |os|
     it { should be_listening }
   end if options[:port_check]
 
-  describe command('/opt/snap/bin/snapd --version') do
-    its(:stdout) { should match /snapd version/ }
+  describe command('/opt/snap/sbin/snapteld --version') do
+    its(:stdout) { should match /snapteld version/ }
   end
 
-  describe command('/opt/snap/bin/snapctl --version'),:retry => 3, :retry_wait => 10 do
-    its(:stdout) { should match /snapctl version/ }
+  describe command('/opt/snap/bin/snaptel --version'),:retry => 3, :retry_wait => 10 do
+    its(:stdout) { should match /snaptel version/ }
   end
 end

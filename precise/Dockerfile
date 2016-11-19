@@ -18,9 +18,9 @@ LABEL vendor="Intelsdi-X" \
 
 EXPOSE 8181
 
-ADD ${CI_URL}/snap/${SNAP_VERSION}/linux/x86_64/snapd  /opt/snap/bin/snapd
-ADD ${CI_URL}/snap/${SNAP_VERSION}/linux/x86_64/snapctl  /opt/snap/bin/snapctl
+ADD ${CI_URL}/snap/${SNAP_VERSION}/linux/x86_64/snapteld  /opt/snap/sbin/snapteld
+ADD ${CI_URL}/snap/${SNAP_VERSION}/linux/x86_64/snaptel  /opt/snap/bin/snaptel
 COPY init_snap /usr/local/bin/init_snap
-COPY snapd.conf /etc/snap/snapd.conf
+COPY snapteld.conf /etc/snap/snapteld.conf
 
-CMD /usr/local/bin/init_snap && /opt/snap/bin/snapd -t ${SNAP_TRUST_LEVEL} -l ${SNAP_LOG_LEVEL} -o ''
+CMD /usr/local/bin/init_snap && /opt/snap/sbin/snapteld -t ${SNAP_TRUST_LEVEL} -l ${SNAP_LOG_LEVEL} -o ''

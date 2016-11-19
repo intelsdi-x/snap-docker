@@ -23,6 +23,6 @@ RUN apk update && \
     rm -rf /var/cache/apk/*
 
 COPY init_snap /usr/local/bin/init_snap
-COPY snapd.conf /etc/snap/snapd.conf
+COPY snapteld.conf /etc/snap/snapteld.conf
 
-CMD /usr/local/bin/init_snap && /opt/snap/bin/snapd -t ${SNAP_TRUST_LEVEL} -l ${SNAP_LOG_LEVEL} -o ''
+CMD /usr/local/bin/init_snap && /opt/snap/sbin/snapteld -t ${SNAP_TRUST_LEVEL} -l ${SNAP_LOG_LEVEL} -o ''
