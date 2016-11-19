@@ -65,6 +65,19 @@ shared_examples "snap containers" do |os|
     end
   end
 
+  snaptel = {
+    "/opt/snap/bin/snaptel" => "/opt/snap/bin/snapctl",
+    "/opt/snap/sbin/snapteld" => "/opt/snap/bin/snapd",
+    "/usr/bin/snaptel" => "/opt/snap/bin/snapctl",
+    "/usr/sbin/snapteld" => "/opt/snap/bin/snapd",
+  }
+  snaptel.each do |f, t|
+    describe file(f) do
+      it { should be_symlink }
+      it { should be_linked_to t }
+    end
+  end
+
   folders = [
     "/opt/snap/bin",
     "/opt/snap/plugins",
