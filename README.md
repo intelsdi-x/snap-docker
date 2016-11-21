@@ -34,7 +34,7 @@ To use a specific version of snap, please use `<version>_<os>` tag:
 ```
 $ docker run -e intelsdi/snap:0.15.0_alpine
 time="2016-08-30T17:52:04Z" level=info msg="setting log level to: debug"
-time="2016-08-30T17:52:04Z" level=info msg="Starting snapd (version: v0.15.0-beta)"
+time="2016-08-30T17:52:04Z" level=info msg="Starting snapteld (version: v0.15.0-beta)"
 ```
 
 The following tags are test containers. On startup, the operating system will use curl to fetch the latest snap build (most current commit in the snap repo):
@@ -56,18 +56,18 @@ To specify a particular release, use SNAP_VERSION environment variable:
 ```
 $ docker run -e SNAP_VERSION=0.15.0 intelsdi/snap:alpine_test
 time="2016-08-30T17:52:04Z" level=info msg="setting log level to: debug"
-time="2016-08-30T17:52:04Z" level=info msg="Starting snapd (version: v0.15.0-beta)"
+time="2016-08-30T17:52:04Z" level=info msg="Starting snapteld (version: v0.15.0-beta)"
 ...
 ```
 
 ```
 $ docker run -e SNAP_VERSION=906d19b646837393f9893870cc2929e791b1f3fb intelsdi/snap:alpine_test
 time="2016-08-30T17:58:10Z" level=info msg="setting log level to: debug"
-time="2016-08-30T17:58:10Z" level=info msg="Starting snapd (version: test-906d19b)"
+time="2016-08-30T17:58:10Z" level=info msg="Starting snapteld (version: test-906d19b)"
 ...
 ```
 
-See snapd man page for additional information on environment variables such as SNAP_TRUST_LEVEL, SNAP_LOG_LEVEL.
+See snapteld man page for additional information on environment variables such as SNAP_TRUST_LEVEL, SNAP_LOG_LEVEL.
 
 ## Build Docker Containers
 
