@@ -6,6 +6,7 @@ ARG BUILD_DATE
 ENV SNAP_VERSION="latest_build"
 ENV SNAP_TRUST_LEVEL=0
 ENV SNAP_LOG_LEVEL=1
+ENV SNAP_URL="http://127.0.0.1:8181"
 
 LABEL vendor="Intelsdi-X" \
       name="Snap Alpine 3.4" \
