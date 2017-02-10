@@ -80,6 +80,7 @@ shared_examples "snap containers" do |os|
   folders = [
     "/opt/snap/bin",
     "/opt/snap/plugins",
+    "/opt/snap/tasks",
     "/var/log/snap",
     "/etc/snap",
   ]
@@ -100,7 +101,7 @@ shared_examples "snap containers" do |os|
     its(:content_as_yaml) {
       should include('log_path' => '/var/log/snap')
       should include('control' => {
-        "auto_discover_path" => "/opt/snap/plugins",
+        "auto_discover_path" => "/opt/snap/plugins:/opt/snap/tasks",
         "plugin_trust_level" => 0,
       })
     }

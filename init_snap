@@ -9,6 +9,7 @@ mkdir -p /usr/local/sbin
 mkdir -p /opt/snap/bin
 mkdir -p /opt/snap/sbin
 mkdir -p /opt/snap/plugins
+mkdir -p /opt/snap/tasks
 mkdir -p /var/log/snap
 mkdir -p /etc/snap
 
