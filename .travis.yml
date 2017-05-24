@@ -7,6 +7,9 @@ rvm:
   - 2.3
 before_install:
   - rake docker:pull
+  - echo "$DOCKER_EMAIL $DOCKER_USERNAME $DOCKER_PASSWORD"
+script:
+  - echo "$DOCKER_EMAIL $DOCKER_USERNAME $DOCKER_PASSWORD"
 before_deploy:
   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - rake build:all
