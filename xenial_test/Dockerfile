@@ -1,5 +1,4 @@
 FROM ubuntu:16.04
-MAINTAINER Nan Liu <nan.liu@gmail.com>
 
 ARG BUILD_DATE
 
