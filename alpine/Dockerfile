@@ -1,5 +1,4 @@
 FROM alpine:3.4
-MAINTAINER Nan Liu <nan.liu@gmail.com>
 
 ARG BUILD_DATE
 ARG SNAP_VERSION=latest

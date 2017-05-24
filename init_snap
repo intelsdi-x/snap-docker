@@ -13,6 +13,8 @@ mkdir -p /opt/snap/tasks
 mkdir -p /var/log/snap
 mkdir -p /etc/snap
 
+chmod -R 755 /opt/snap/plugins
+
 [ -f /opt/snap/sbin/snapteld ] || (curl -sfL "${CI_URL}/snap/${SNAP_VERSION}/linux/x86_64/snapteld" -o /opt/snap/sbin/snapteld || curl -sfL "${CI_URL}/snap/${SNAP_VERSION}/linux/x86_64/snapd" -o /opt/snap/sbin/snapteld)
 [ -f /opt/snap/bin/snaptel ] || (curl -sfL "${CI_URL}/snap/${SNAP_VERSION}/linux/x86_64/snaptel" -o /opt/snap/bin/snaptel || curl -sfL "${CI_URL}/snap/${SNAP_VERSION}/linux/x86_64/snapctl" -o /opt/snap/bin/snaptel)
 chmod 755 /opt/snap/sbin/snapteld

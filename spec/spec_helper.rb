@@ -9,8 +9,6 @@ RSpec.configure do |c|
 end
 
 shared_examples "metadata" do
-  it { should have_maintainer /Nan Liu/ }
-
   %w[SNAP_VERSION SNAP_TRUST_LEVEL SNAP_LOG_LEVEL].each do |e|
     it { should have_env e }
   end
