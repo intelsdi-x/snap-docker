@@ -32,7 +32,7 @@ The following tags will contain the latest snap release (most current git tag). 
 To use a specific version of snap, please use `<version>_<os>` tag:
 
 ```
-$ docker run -e intelsdi/snap:0.15.0_alpine
+$ docker run intelsdi/snap:0.15.0_alpine
 time="2016-08-30T17:52:04Z" level=info msg="setting log level to: debug"
 time="2016-08-30T17:52:04Z" level=info msg="Starting snapteld (version: v0.15.0-beta)"
 ```
