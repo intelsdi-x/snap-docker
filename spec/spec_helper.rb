@@ -27,7 +27,7 @@ end
 
 shared_examples "snap containers" do |os|
   # NOTE: some containers are missing the ss command, and we do not want to install the packages dependencies
-  if ['centos7', 'centos7_test', 'precise', 'precise_test',  'xenial', 'xenial_test'].include? os
+  if ['centos7', 'centos7_test', 'precise', 'precise_test',  'xenial', 'xenial_test', 'bionic', 'bionic_test'].include? os
     options = { port_check: false }
   else
     options = { port_check: true }
