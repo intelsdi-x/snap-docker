@@ -13,6 +13,7 @@ This repository contains snap installed on several linux operating system.
 * Ubuntu 12.04 precise ([precise/Dockerfile](https://github.com/intelsdi-x/snap-docker/blob/master/precise/Dockerfile))
 * Ubuntu 14.04 trusty ([trusty/Dockerfile](https://github.com/intelsdi-x/snap-docker/blob/master/trusty/Dockerfile))
 * Ubuntu 16.04 xenial ([xenial/Dockerfile](https://github.com/intelsdi-x/snap-docker/blob/master/xenial/Dockerfile))
+* Ubuntu 18.04 bionic ([bionic/Dockerfile](https://github.com/intelsdi-x/snap-docker/blob/master/bionic/Dockerfile))
 
 Additional [image layer info](https://microbadger.com/#/images/intelsdi/snap)
 
@@ -28,6 +29,7 @@ The following tags will contain the latest snap release (most current git tag). 
 * trusty
 * precise
 * xenial
+* bionic
 
 To use a specific version of snap, please use `<version>_<os>` tag:
 
@@ -45,6 +47,7 @@ The following tags are test containers. On startup, the operating system will us
 * trusty_test
 * precise_test
 * xenial_test
+* bionic_test
 
 To specify a particular release, use SNAP_VERSION environment variable:
 
@@ -83,6 +86,7 @@ The operating system supports:
 * trusty
 * precise
 * xenial
+* bionic
 
 The org is the docker organization and defaults to (intelsdi)
 
@@ -92,6 +96,7 @@ Examples:
 $ build.sh alpine intelsdi
 $ build.sh trusty
 $ build.sh precise
+$ build.sh bionic
 $ build.sh centos6
 $ build.sh centos7
 ```

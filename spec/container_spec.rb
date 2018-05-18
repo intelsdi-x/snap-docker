@@ -3,7 +3,7 @@ require 'spec_helper'
 if ENV["BUILD_OS"]
   BUILDS = ENV["BUILD_OS"].split(" ")
 else
-  BUILDS = %w[alpine centos6 centos7 precise trusty xenial alpine_test centos6_test centos7_test precise_test trusty_test xenial_test]
+  BUILDS = %w[alpine centos6 centos7 precise trusty xenial bionic alpine_test centos6_test centos7_test precise_test trusty_test xenial_test bionic_test]
 end
 
 BUILDS.each do |os|
@@ -27,7 +27,7 @@ BUILDS.each do |os|
           end
 
           case os
-          when "alpine", "trusty_test", "xenial_test"
+          when "alpine", "trusty_test", "xenial_test", "bionic_test"
             describe package("jq") do
               it { should be_installed }
             end
