@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 ARG BUILD_DATE
 ARG SNAP_VERSION=latest
@@ -9,7 +9,7 @@ ENV SNAP_LOG_LEVEL=1
 ENV CI_URL=https://s3-us-west-2.amazonaws.com/snap.ci.snap-telemetry.io
 
 LABEL vendor="Intelsdi-X" \
-      name="Snap Ubuntu 16.04" \
+      name="Snap Ubuntu 18.04" \
       license="Apache 2.0" \
       build-date=$BUILD_DATE \
       io.snap-telemetry.snap.version=$SNAP_VERSION \

@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 ARG BUILD_DATE
 
@@ -7,7 +7,7 @@ ENV SNAP_TRUST_LEVEL=0
 ENV SNAP_LOG_LEVEL=1
 
 LABEL vendor="Intelsdi-X" \
-      name="Snap Ubuntu 16.04" \
+      name="Snap Ubuntu 18.04" \
       license="Apache 2.0" \
       build-date=$BUILD_DATE \
       io.snap-telemetry.snap.version=$SNAP_VERSION \
